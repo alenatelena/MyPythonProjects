@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Trainer</title>
+    <script src="/static/js/home.js"></script>
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+
+<body>
+    <div class="header">
+        <button class="login-button" onclick="toLogin()">Войти или зарегистрироваться</button>
+    </div>
+    <div class="container" id="main">
+        <div class="title">Промпт-тренажер</div>
+        <div class="subtitle">Напишите свой запрос, мы подберем наводящие вопросы, которые помогут Вам сформировать
+            промпт для нейросети.</div>
+        <textarea id="textInput" class="input-box" placeholder="Напишите свой запрос здесь..."></textarea>
+        <div class="buttons">
+            <button class="button cancel" onclick="clearText()">Отменить</button>
+            <button class="button submit" onclick="fetchData()">Отправить</button>
+        </div>
+        <div id='serverText' class="serverText"></div>
+    </div>
+</body>
+
+</html>

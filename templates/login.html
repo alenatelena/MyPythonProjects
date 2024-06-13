@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма авторизации и регистрации</title>
+    <style>
+        /* Стили для красивого оформления формы */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Форма авторизации -->
+        <form id="loginForm" class="form-group" action="/login" method="post">
+            <h2>Вход</h2>
+            <div class="form-group">
+                <label for="login">Логин:</label>
+                <input type="text" id="login" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Войти">
+            </div>
+        </form>
+
+        <!-- Форма регистрации -->
+        <form id="registerForm" class="form-group" style="display: none;" method="post" action="/register">
+            <h2>Регистрация</h2>
+            <div class="form-group">
+                <label for="firstName">Имя:</label>
+                <input type="text" id="firstName" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Фамилия:</label>
+                <input type="text" id="lastName" name="surname" required>
+            </div>
+            <div class="form-group">
+                <label for="registerLogin">Логин:</label>
+                <input type="text" id="registerLogin" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Пароль:</label>
+                <input type="password" id="registerPassword" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Номер телефона:</label>
+                <input type="tel" id="phoneNumber" name="phone" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Зарегистрироваться">
+            </div>
+        </form>
+
+        <!-- Кнопка переключения между формами -->
+        <button id="toggleFormButton">Регистрация</button>
+    </div>
+
+    <script>
+        // Получение ссылок на формы и кнопку переключения
+        var loginForm = document.getElementById("loginForm");
+        var registerForm = document.getElementById("registerForm");
+        var toggleFormButton = document.getElementById("toggleFormButton");
+
+        // Функция для переключения между формами
+        function toggleForms() {
+            if (loginForm.style.display === "none") {
+                loginForm.style.display = "block";
+                registerForm.style.display = "none";
+                toggleFormButton.textContent = "Регистрация";
+            } else {
+                loginForm.style.display = "none";
+                registerForm.style.display = "block";
+                toggleFormButton.textContent = "Вход";
+            }
+        }
+
+        function afterRegister(event) {
+            const data = new URLSearchParams();
+            for (const pair of new FormData(registerForm)) {
+                data.append(pair[0], pair[1]);
+            }
+            event.preventDefault()
+            fetch('/register', {
+                method: 'post',
+                body: data
+            }).then(() => {
+                window.location.href = '/login'
+            }).catch(() => {
+                alert('Ошибка при заполнении данных')
+            })
+        }
+
+        function afterLogin(event) {
+            const data = new URLSearchParams();
+            for (const pair of new FormData(loginForm)) {
+                data.append(pair[0], pair[1]);
+            }
+            event.preventDefault()
+            fetch('/register', {
+                method: 'post',
+                body: data
+            }).then(() => {
+                localStorage.setItem('user', document.getElementById('registerLogin').textContent)
+                window.location.href = '/'
+            }).catch(() => {
+                alert('Ошибка при заполнении данных')
+            })
+        }
+
+        // Назначение обработчика события клика кнопке переключения
+        toggleFormButton.addEventListener("click", toggleForms);
+        registerForm.addEventListener("submit", afterRegister);
+        loginForm.addEventListener("submit", afterLogin);
+    </script>
+
+</body>
+
+</html>
