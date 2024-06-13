@@ -25,20 +25,27 @@ async def compile(body: Annotated[str, Body()]):
     return compile_prompt(questions)
 
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/main", response_class=HTMLResponse)
 async def root(request: Request):
     return templates.TemplateResponse(request=request, name="home.html", context={})
 
 
 @app.get("/login", response_class=HTMLResponse)
 async def login(request: Request):
+    if request.headers.get('X-auth-user'):
+        return templates.TemplateResponse(request=request, name="home.html", context={})
     return templates.TemplateResponse(request=request, name="login.html", context={})
 
 
 @app.post("/login", response_class=HTMLResponse)
-async def auth(username: Annotated[str, Form()], password: Annotated[str, Form()]):
+async def auth(request: Request, username: Annotated[str, Form()], password: Annotated[str, Form()]):
+    if request.headers.get('X-auth-user'):
+        return templates.TemplateResponse(request=request, name="home.html", context={})
     return authenticate(username, password)
 
+@app.get("/", response_class=HTMLResponse)
+async def landing(request: Request):
+    return templates.TemplateResponse(request=request, name="main_page.html", context={})
 
 @app.post("/register", response_class=HTMLResponse)
 async def reg(

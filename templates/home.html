@@ -7,11 +7,24 @@
     <title>Prompt Trainer</title>
     <script src="/static/js/home.js"></script>
     <link rel="stylesheet" href="/static/css/home.css">
+    <script>
+        self.addEventListener("fetch", (event) => {
+        var currentUrl = new URL(event.request.url);
+        var newRequest = new Request(event.request, {
+            credentials: "same-origin",
+            headers: {
+                'X-auth-user': '123',
+            }
+        });
+        event.respondWith(fetch(newRequest));
+    });
+    </script>
 </head>
 
 <body>
-    <div class="header">
-        <button class="login-button" onclick="toLogin()">Войти или зарегистрироваться</button>
+    <div class="header" id="header-user">
+        <div>Добро пожаловать, <span id="user-name-header"></span></div>
+        <button class="login-button" onclick="logout()">Выйти</button>
     </div>
     <div class="container" id="main">
         <div class="title">Промпт-тренажер</div>
@@ -25,5 +38,12 @@
         <div id='serverText' class="serverText"></div>
     </div>
 </body>
-
+<script>
+    if (typeof localStorage.getItem('user') ==="string") {
+        document.getElementById('user-name-header').innerText = " " + localStorage.getItem('user');
+        console.log(localStorage.getItem('user'));
+    } else {
+        document.getElementById('header-user').style = "display: none";
+    }
+</script>
 </html>

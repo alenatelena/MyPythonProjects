@@ -121,9 +121,13 @@
             event.preventDefault()
             fetch('/register', {
                 method: 'post',
-                body: data
+                body: data,
+                headers: {
+            'X-auth-user': localStorage.getItem('user')
+        }
             }).then(() => {
-                window.location.href = '/login'
+                localStorage.setItem('user', document.getElementById('registerLogin').value)
+                window.location.href = '/main'
             }).catch(() => {
                 alert('Ошибка при заполнении данных')
             })
@@ -135,12 +139,15 @@
                 data.append(pair[0], pair[1]);
             }
             event.preventDefault()
-            fetch('/register', {
+            fetch('/login', {
                 method: 'post',
-                body: data
+                body: data,
+                headers: {
+            'X-auth-user': localStorage.getItem('user')
+        }
             }).then(() => {
-                localStorage.setItem('user', document.getElementById('registerLogin').textContent)
-                window.location.href = '/'
+                localStorage.setItem('user', document.getElementById('login').value)
+                window.location.href = '/main'
             }).catch(() => {
                 alert('Ошибка при заполнении данных')
             })

@@ -5,7 +5,10 @@ var rawPrompt = '';
 function compilePrompt() {
     fetch('/compile', {
         method: 'POST',
-        body: JSON.stringify({ questions })
+        body: JSON.stringify({ questions }),
+        headers: {
+            'X-auth-user': localStorage.getItem('user')
+        }
     }
     ).then(
         response => response.json()
@@ -103,7 +106,10 @@ function fetchData() {
         method: 'POST',
         body: JSON.stringify({ // Преобразование данных в формат JSON
             textInput: textValue
-        })
+        }),
+        headers: {
+            'X-auth-user': localStorage.getItem('user')
+        }
     })
         .then(response => response.json())  // Преобразуем ответ сервера в JSON
         .then(data => {
@@ -128,4 +134,9 @@ function clearText() {
 
 function toLogin() {
     window.location.href += 'login'
+}
+
+function logout() {
+    localStorage.removeItem('user')
+    window.location.href = '/'
 }
