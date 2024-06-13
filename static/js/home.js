@@ -133,7 +133,7 @@ function clearText() {
 }
 
 function toLogin() {
-    window.location.href += 'login'
+    window.location.href = '/login'
 }
 
 function logout() {
