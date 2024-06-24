@@ -99,7 +99,7 @@
 
     <section id="login-modal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span id="close-1" class="close">&times;</span>
             <h2>Войти или зарегистрироваться</h2>
             <form id="login-form" action="/login" method="post">
                 <div class="form-group">
@@ -120,7 +120,7 @@
 
     <section id="register-modal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span id="close-2" class="close">&times;</span>
             <h2>Зарегистрироваться</h2>
             <form  id="register-form" method="post" action="/register">
                 <div class="form-group">
@@ -185,10 +185,10 @@
             document.getElementById('register-modal').style.display = 'none';
         });
 
-        document.getElementsByClassName('close')[0].addEventListener('click', function() {
+        document.getElementById('close-1').addEventListener('click', function() {
             document.getElementById('login-modal').style.display = 'none';
         });
-        document.getElementsByClassName('close')[1].addEventListener('click', function() {
+        document.getElementById('close-2').addEventListener('click', function() {
             document.getElementById('register-modal').style.display = 'none';
         });
 
