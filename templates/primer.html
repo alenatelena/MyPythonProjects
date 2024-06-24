@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Платформа для обучения написанию промптов</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Домой</a></li>
+                <li><a href="#about">О проекте</a></li>
+                <li><a href="#how-it-works">Как это работает</a></li>
+                <li><a href="#benefits">Преимущества</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li><a href="#login">Войти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="main-screen">
+        <div class="main-screen-content">
+            <h1>Изучайте и создавайте идеальные промпты для нейросетей</h1>
+            <p>Платформа для обучения написанию промптов, которая поможет вам создать точные и эффективные запросы для различных нейросетей.</p>
+            <button id="login-button">Войти</button>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>О проекте</h2>
+            <div class="about-content">
+                <p>Наша платформа предлагает удобный инструмент для обучения написанию промптов. Просто введите ваш запрос, отвечайте на наводящие вопросы и получите готовый промпт, сопровождаемый детальным отчетом об изменениях.</p>
+                <img src="about-image.jpg" alt="О проекте">
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works">
+        <div class="container">
+            <h2>Как это работает</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fas fa-keyboard"></i></div>
+                    <h3>Введите ваш запрос</h3>
+                    <p>Просто введите свой запрос в текстовое поле.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Выберите нейросеть</h3>
+                    <p>Выберите подходящую нейросеть для обработки вашего запроса.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fas fa-question-circle"></i></div>
+                    <h3>Ответьте на наводящие вопросы</h3>
+                    <p>Ответьте на несколько наводящих вопросов для уточнения вашего запроса.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Получите готовый промпт и отчет</h3>
+                    <p>Получите идеальный промпт и отчет о том, как он изменялся на основе ваших ответов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits">
+        <div class="container">
+            <h2>Преимущества</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h3>Интуитивный интерфейс</h3>
+                    <p>Простой и удобный интерфейс, который легко освоить.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Гибкость и точность</h3>
+                    <p>Создавайте точные промпты, подходящие под ваши потребности.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Экономия времени</h3>
+                    <p>Быстрое создание качественных промптов для различных задач.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Подробные отчеты</h3>
+                    <p>Получайте детальные отчеты о каждом этапе изменения вашего промпта.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Войти или зарегистрироваться</h2>
+            <form>
+                <label for="username">Имя пользователя</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Войти</button>
+            </form>
+            <p>Еще нет аккаунта? <a href="#">Зарегистрируйтесь</a></p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Остались вопросы? Свяжитесь с нами!</h2>
+            <form>
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Сообщение</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('login-button').addEventListener('click', function() {
+            document.getElementById('login-modal').style.display = 'block';
+        });
+
+        document.getElementsByClassName('close')[0].addEventListener('click', function() {
+            document.getElementById('login-modal').style.display = 'none';
+        });
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('login-modal')) {
+                document.getElementById('login-modal').style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
