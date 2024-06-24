@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crafti</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f9f9f9;
+            color: #333;
+            /* Main text color */
+        }
+
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            box-sizing: border-box;
+            background-color: #333;
+            /* Header background color */
+            color: #fff;
+            /* Header text color */
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #fff;
+            /* Nav link color */
+            cursor: pointer;
+            /* Add cursor pointer */
+        }
+
+        .join-button,
+        .login-button,
+        .register-button {
+            border: 2px solid #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+        }
+
+        .join-button:hover,
+        .login-button:hover,
+        .register-button:hover {
+            background-color: #555;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 40px 20px;
+            /* Adjusted padding */
+            color: #333;
+            /* Main content text color */
+        }
+
+        .main-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            /* Adjusted margin-bottom */
+        }
+
+        .button-group a {
+            padding: 15px 30px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .start-button {
+            background-color: #00f;
+        }
+
+        .start-button:hover {
+            background-color: #008;
+        }
+
+        .access-section {
+            background-color: #fff;
+            padding: 40px 20px;
+            text-align: left;
+            /* Left align text */
+            width: 80%;
+            /* Adjusted width */
+            margin-top: 20px;
+            /* Added margin-top */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Box shadow for section */
+            border-radius: 8px;
+            /* Rounded corners */
+        }
+
+        .access-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+            /* Heading color */
+        }
+
+        .access-section p {
+            font-size: 18px;
+            color: #555;
+            /* Paragraph text color */
+            line-height: 1.6;
+            /* Increased line height */
+        }
+
+        .access-section details {
+            margin-bottom: 20px;
+            /* Margin below each details block */
+            border-bottom: 1px solid #ddd;
+            /* Bottom border */
+            padding-bottom: 10px;
+            /* Added padding-bottom */
+        }
+
+        .access-section summary {
+            cursor: pointer;
+            /* Pointer cursor for summary */
+            font-weight: bold;
+            /* Bold text for summary */
+            margin-bottom: 10px;
+            /* Margin below each summary */
+            list-style: none;
+            /* Remove default list-style */
+        }
+
+        .access-section details[open] summary::marker {
+            content: "\25BC";
+            /* Unicode arrow down */
+            font-size: 16px;
+            color: #555;
+            float: right;
+            margin-top: -1px;
+        }
+
+        .access-section details summary::-webkit-details-marker {
+            display: none;
+            /* Hide default marker in Chrome */
+        }
+
+        .access-section details p {
+            margin-top: 10px;
+            /* Top margin for paragraph inside details */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Craf</div>
+        <nav>
+            <a href="#" onclick="scrollToElement('start-button')">Промпт тренажер</a>
+            <a href="#">О Нас</a>
+            <a href="#">Контакты</a>
+            <a href="#">Доступ к нейросетям</a>
+        </nav>
+        <a href="#" class="join-button">Регистрация</a>
+        <a href="#" class="login-button">Войти</a>
+    </header>
+    <div class="main-content">
+        <h1>Добро пожаловать</h1>
+        <p>Промпт-тренажер - это платформа, предназначенная обучения создания эффективных запросов для нейронных сетей. </p>
+        <div class="button-group">
+            <a id="start-button" href="#" class="start-button">Попробовать бесплатно</a>
+        </div>
+    <div class="access-section">
+        <h2>Доступ к нейросетям</h2>
+        <details>
+            <summary>Midjourney</summary>
+            <p><strong>Регистрация и доступ к Midjourney в Discord:</strong></p>
+            <p>Midjourney в настоящее время доступен только в виде бота для Discord. Для начала использования вам
+                необходимо зарегистрироваться на платформе Discord, если у вас еще нет аккаунта.</p>
+            <p><strong>Добавление Midjourney на свой сервер Discord:</strong></p>
+            <p>После регистрации на Discord, перейдите на официальный сервер команды Midjourney. На официальном сервере
+                вы сможете следить за новостями и обновлениями, участвовать в конкурсах и общаться с сообществом. Для
+                добавления Midjourney на свой сервер используйте соответствующие инструкции Discord.</p>
+            <p><strong>Использование Midjourney для генерации изображений:</strong></p>
+            <p>Чтобы создать изображение с помощью Midjourney, отправьте запрос в чат с ботом Midjourney на сервере
+                Discord. Бот будет генерировать изображения в ответ на ваши запросы, предоставляя возможность
+                взаимодействия с нейросетевой технологией.</p>
+            <p><strong>Использование Midjourney на других серверах:</strong></p>
+            <p>Midjourney можно добавить на различные серверы Discord, включая личные серверы. Это позволяет
+                генерировать изображения в разных каналах или использовать бота с друзьями, если количество подписчиков
+                на сервере не превышает 10 тысяч человек.</p>
+            <p><strong>Использование Midjourney через тематические боты в Telegram:</strong></p>
+            <p>Официальной версии Midjourney для Telegram не существует, и доступ к API не открыт. В Telegram есть
+                некоторые тематические боты, которые предлагают функции, сходные с Midjourney. При использовании таких
+                ботов следует быть осторожным, так как качество и возможности могут сильно различаться. Больш</p>
+        </details>
+
+        <details>
+            <summary>DALL-e 3</summary>
+            <p><strong>Начните, перейдя на страницу Bing Image Creator с использованием иностранного IP-адреса через
+                    любой веб-браузер. Альтернативный способ — просто нажмите на иконку Bing Image Creator в боковой
+                    панели браузера Microsoft Edge.</strong></p>
+            <p>Войдите в свой профиль Microsoft или зарегистрируйтесь, если у вас еще нет аккаунта.</p>
+            <p>Введите ваш запрос в поле и нажмите кнопку «Создать» или выберите «Удиви меня». В последнем случае
+                нейросеть сама сгенерирует запрос.</p>
+            <p>Каждый день доступно 25 «ускорений», после исчерпания которых генерация изображений замедлится для
+                снижения нагрузки на серверы. Приобрести дополнительные ускорения невозможно.</p>
+        </details>
+    </div>
+</body>
+
+</html>

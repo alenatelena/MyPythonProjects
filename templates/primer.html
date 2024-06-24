@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Платформа для обучения написанию промптов</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Домой</a></li>
+                <li><a href="#about">О проекте</a></li>
+                <li><a href="#how-it-works">Как это работает</a></li>
+                <li><a href="#benefits">Преимущества</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li><a id="login-header" href="#login">Войти</a></li>
+                <li><a class="try-free" href="/main">Попробовать бесплатно</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="main-screen">
+        <div class="main-screen-content">
+            <h1>Изучайте и создавайте идеальные промпты для нейросетей</h1>
+            <p>Платформа для обучения написанию промптов, которая поможет вам создать точные и эффективные запросы для различных нейросетей.</p>
+            <button id="login-button">Войти</button>
+            <a class="try-free" href="/main">Попробовать бесплатно</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>О проекте</h2>
+            <div class="about-content">
+                <p>Наша платформа предлагает удобный инструмент для обучения написанию промптов. Просто введите ваш запрос, отвечайте на наводящие вопросы и получите готовый промпт, сопровождаемый детальным отчетом об изменениях.</p>
+                <img src="about-image.jpg" alt="О проекте">
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works">
+        <div class="container">
+            <h2>Как это работает</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fas fa-keyboard"></i></div>
+                    <h3>Введите ваш запрос</h3>
+                    <p>Просто введите свой запрос в текстовое поле.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Выберите нейросеть</h3>
+                    <p>Выберите подходящую нейросеть для обработки вашего запроса.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fas fa-question-circle"></i></div>
+                    <h3>Ответьте на наводящие вопросы</h3>
+                    <p>Ответьте на несколько наводящих вопросов для уточнения вашего запроса.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Получите готовый промпт и отчет</h3>
+                    <p>Получите идеальный промпт и отчет о том, как он изменялся на основе ваших ответов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits">
+        <div class="container">
+            <h2>Преимущества</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h3>Интуитивный интерфейс</h3>
+                    <p>Простой и удобный интерфейс, который легко освоить.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Гибкость и точность</h3>
+                    <p>Создавайте точные промпты, подходящие под ваши потребности.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Экономия времени</h3>
+                    <p>Быстрое создание качественных промптов для различных задач.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Подробные отчеты</h3>
+                    <p>Получайте детальные отчеты о каждом этапе изменения вашего промпта.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Войти или зарегистрироваться</h2>
+            <form id="login-form" action="/login" method="post">
+                <div class="form-group">
+                    <label for="login">Логин:</label>
+                    <input type="text" id="login" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Войти">
+                </div>
+            </form>
+            <p>Еще нет аккаунта? <a id="register-button" href="#">Зарегистрируйтесь</a></p>
+        </div>
+    </section>
+
+    <section id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Зарегистрироваться</h2>
+            <form  id="register-form" method="post" action="/register">
+                <div class="form-group">
+                    <label for="firstName">Имя:</label>
+                    <input type="text" id="firstName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Фамилия:</label>
+                    <input type="text" id="lastName" name="surname" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerLogin">Логин:</label>
+                    <input type="text" id="registerLogin" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Пароль:</label>
+                    <input type="password" id="registerPassword" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Номер телефона:</label>
+                    <input type="tel" id="phoneNumber" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Зарегистрироваться">
+                </div>
+            </form>
+            <p>Уже есть аккаунт? <a id="login-button-from-register" href="#">Войти</a></p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Остались вопросы? Свяжитесь с нами!</h2>
+            <form>
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Сообщение</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('login-button').addEventListener('click', function() {
+            document.getElementById('login-modal').style.display = 'block';
+        });
+
+        document.getElementById('login-header').addEventListener('click', function() {
+            document.getElementById('login-modal').style.display = 'block';
+        });
+
+        document.getElementById('register-button').addEventListener('click', function() {
+            document.getElementById('login-modal').style.display = 'none';
+            document.getElementById('register-modal').style.display = 'block';
+        });
+
+        document.getElementById('login-button-from-register').addEventListener('click', function() {
+            document.getElementById('login-modal').style.display = 'block';
+            document.getElementById('register-modal').style.display = 'none';
+        });
+
+        document.getElementsByClassName('close')[0].addEventListener('click', function() {
+            document.getElementById('login-modal').style.display = 'none';
+        });
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('login-modal')) {
+                document.getElementById('login-modal').style.display = 'none';
+            }
+        };
+
+        // Получение ссылок на формы и кнопку переключения
+        var loginForm = document.getElementById("login-form");
+        var registerForm = document.getElementById("register-form");
+
+        function afterRegister(event) {
+            const data = new URLSearchParams();
+            for (const pair of new FormData(registerForm)) {
+                data.append(pair[0], pair[1]);
+            }
+            event.preventDefault()
+            fetch('/register', {
+                method: 'post',
+                body: data,
+                headers: {
+            'X-auth-user': localStorage.getItem('user')
+        }
+            }).then(() => {
+                localStorage.setItem('user', document.getElementById('registerLogin').value)
+                window.location.href = '/main'
+            }).catch(() => {
+                alert('Ошибка при заполнении данных')
+            })
+        }
+
+        function afterLogin(event) {
+            const data = new URLSearchParams();
+            for (const pair of new FormData(loginForm)) {
+                data.append(pair[0], pair[1]);
+            }
+            event.preventDefault()
+            fetch('/login', {
+                method: 'post',
+                body: data,
+                headers: {
+            'X-auth-user': localStorage.getItem('user')
+        }
+            }).then(() => {
+                localStorage.setItem('user', document.getElementById('login').value)
+                window.location.href = '/main'
+            }).catch(() => {
+                alert('Ошибка при заполнении данных')
+            })
+        }
+
+        // Назначение обработчика события клика кнопке переключения
+        registerForm.addEventListener("submit", afterRegister);
+        loginForm.addEventListener("submit", afterLogin);
+    </script>
+</body>
+</html>

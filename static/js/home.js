@@ -66,7 +66,7 @@ function drawQuestions(question, index) {
     var inp = document.createElement('input');
     inp.id = String(index);
     var inpStyle = 'width: 300px;';
-    inp.style = index === 0 ? inpStyle : inpStyle + ' position: absolute; opacity: 0';
+    inp.style = index === 0 ? inpStyle : inpStyle + ' position: absolute; display: none';
     inp.setAttribute("class", "question-input")
     // inp.className += "question-input";
 
@@ -74,7 +74,7 @@ function drawQuestions(question, index) {
     var lb = document.createElement('label');
     lb.innerText = question;
     lb.id = String(index) + '-label';
-    lb.style = index !== 0 && 'position: absolute; opacity: 0';
+    lb.style = index !== 0 && 'position: absolute; display: none';
     lb.setAttribute("class", "regular-text");
     // lb.classList.add("regular-text");
 
@@ -88,7 +88,7 @@ function drawQuestions(question, index) {
     // Также добавляем функцию, которая срабатывает на нажатие кнопки
     btn.onclick = nextQuestion;
     var btnStyle = 'width: 150px;';
-    btn.style = index === 0 ? btnStyle : btnStyle + 'position: absolute; opacity: 0';
+    btn.style = index === 0 ? btnStyle : btnStyle + 'position: absolute; display: none';
 
     // В элемент serverText кладем созданные элементы
     document.getElementById('serverText').appendChild(lb);
