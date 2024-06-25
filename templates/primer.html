@@ -36,7 +36,7 @@
             <h2>О проекте</h2>
             <div class="about-content">
                 <p>Наша платформа предлагает удобный инструмент для обучения написанию промптов. Просто введите ваш запрос, отвечайте на наводящие вопросы и получите готовый промпт, сопровождаемый детальным отчетом об изменениях.</p>
-                <img src="about-image.jpg" alt="О проекте">
+                <img src="/static/img/prompt.jfif" class="prompt_img" alt="О проекте">
             </div>
         </div>
     </section>
@@ -99,7 +99,7 @@
 
     <section id="login-modal" class="modal">
         <div class="modal-content">
-            <span id="close-1" class="close">&times;</span>
+            <span class="close">&times;</span>
             <h2>Войти или зарегистрироваться</h2>
             <form id="login-form" action="/login" method="post">
                 <div class="form-group">
@@ -120,7 +120,7 @@
 
     <section id="register-modal" class="modal">
         <div class="modal-content">
-            <span id="close-2" class="close">&times;</span>
+            <span class="close">&times;</span>
             <h2>Зарегистрироваться</h2>
             <form  id="register-form" method="post" action="/register">
                 <div class="form-group">
@@ -185,20 +185,13 @@
             document.getElementById('register-modal').style.display = 'none';
         });
 
-        document.getElementById('close-1').addEventListener('click', function() {
+        document.getElementsByClassName('close')[0].addEventListener('click', function() {
             document.getElementById('login-modal').style.display = 'none';
-        });
-        document.getElementById('close-2').addEventListener('click', function() {
-            document.getElementById('register-modal').style.display = 'none';
         });
 
         window.onclick = function(event) {
             if (event.target == document.getElementById('login-modal')) {
                 document.getElementById('login-modal').style.display = 'none';
-            }
-
-            if (event.target == document.getElementById('register-modal')) {
-                document.getElementById('register-modal').style.display = 'none';
             }
         };
 

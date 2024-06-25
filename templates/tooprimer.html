@@ -1,0 +1,77 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Попробовать бесплатно</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Домой</a></li>
+                <li><a href="#about">О проекте</a></li>
+                <li><a href="#how-it-works">Как это работает</a></li>
+                <li><a href="#benefits">Преимущества</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li><a id="login-header" href="#login">Войти</a></li>
+                <li><a class="try-free" href="/main">Попробовать бесплатно</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="query-input">
+        <div class="container">
+            <h1>Введите ваш запрос</h1>
+            <form id="query-form">
+                <div class="form-group">
+                    <label for="query">Запрос:</label>
+                    <input type="text" id="query" name="query" required>
+                </div>
+                <div class="form-group">
+                    <label for="neural-network">Выберите нейросеть:</label>
+                    <select id="neural-network" name="neural-network" required>
+                        <option value="neural-network-1">Нейросеть 1</option>
+                        <option value="neural-network-2">Нейросеть 2</option>
+                        <option value="neural-network-3">Нейросеть 3</option>
+                    </select>
+                </div>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="response">
+        <div class="container">
+            <h2>Ваш результат:</h2>
+            <div id="result"></div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('query-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const data = new URLSearchParams();
+            for (const pair of new FormData(this)) {
+                data.append(pair[0], pair[1]);
+            }
+
+            fetch('/process-query', {
+                method: 'post',
+                body: data,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-auth-user': localStorage.getItem('user')
+                }
+            }).then(response => response.json())
+            .then(result => {
+                document.getElementById('result').innerText = JSON.stringify(result, null, 2);
+            }).catch(error => {
+                console.error('Ошибка:', error);
+                document.getElementById('result').innerText = 'Произошла ошибка при обработке вашего запроса.';
+            });
+        });
+    </script>
+</body>
+</html>
